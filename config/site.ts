@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "Editorial & Street Photography",
   title: "MOSCOW AUTUMN — Editorial & Street Photography Portfolio",
   description:
-    "A curated 20-frame editorial photography collection captured across Moscow. Leica M11 Monochrom fine art, Kodak Portra 400 film color, Manezhnaya Square, Alexander Garden and urban atmosphere.",
+    "A curated 23-piece editorial photography collection captured across Moscow. Magazine covers, Swiss modernist posters, Leica M11 Monochrom fine art, Kodak Portra 400 film color, Manezhnaya Square, Alexander Garden and urban atmosphere.",
   url: "https://ryzenovod.github.io/moscow-editorial-folio",
 
   contact: {
@@ -23,12 +23,43 @@ export const siteConfig = {
   hero: {
     eyebrow: "Moscow · Autumn 2026",
     headline: "MOSCOW AUTUMN: Light, Architecture & Solitude",
-    sub: "A 20-frame editorial narrative documenting autumn in the capital: from quiet subway corners to grand historical facades, contrasting Leica M11 Monochrom noir with warm Kodak Portra 400 film grain.",
+    sub: "A 23-piece editorial narrative documenting autumn in the capital: featuring master magazine covers and Swiss modernist posters, contrasting Leica M11 Monochrom noir with warm Kodak Portra 400 film grain.",
     primaryCta: "Explore gallery",
     secondaryCta: "About the series",
   },
 
   galleries: [
+    {
+      slug: "special-artworks",
+      name: "Covers & Special Editions",
+      blurb: "Master artwork deliverables: glossy editorial magazine cover, Swiss modernist typographic exhibition poster, and tactile fashion moodboard.",
+      photos: [
+        {
+          id: 101,
+          title: "MOSCOW Editorial Magazine Cover",
+          src: "/moscow-editorial-folio/photos/00_Magazine_Cover.jpg",
+          width: 1792,
+          height: 2400,
+          ratio: "portrait",
+        },
+        {
+          id: 102,
+          title: "Swiss International Typographic Poster",
+          src: "/moscow-editorial-folio/photos/00_Swiss_Poster.jpg",
+          width: 1790,
+          height: 2400,
+          ratio: "portrait",
+        },
+        {
+          id: 103,
+          title: "Art Director's Moodboard & Film Strips",
+          src: "/moscow-editorial-folio/photos/00_Editorial_Collage.jpg",
+          width: 1792,
+          height: 2400,
+          ratio: "portrait",
+        },
+      ],
+    },
     {
       slug: "monochrome",
       name: "Monochrome (Leica B&W)",
@@ -213,14 +244,14 @@ export const siteConfig = {
   ],
 
   about: {
-    heading: "20 frames exploring the rhythm of late October in Moscow",
+    heading: "23 works exploring the rhythm of late October in Moscow",
     body: [
       "This editorial collection captures the distinct atmosphere of Moscow in autumn: tailored wool overcoats against neoclassical facades, golden foliage in Alexander Garden, quiet contemplation on the metro, and spontaneous moments of friendship.",
-      "Shot with an emphasis on authentic texture, balanced geometry, and classic cinematic color grading inspired by Kodak Portra 400 and Leica M11 Monochrom optics.",
+      "Expanded with custom master editorial magazine covers, Swiss typographic exhibition posters, and tactile film contact sheets, shot with an emphasis on authentic texture and classic Leica M11 and Kodak Portra 400 optics.",
     ],
     stats: [
-      { value: "20", label: "Curated frames" },
-      { value: "3", label: "Series chapters" },
+      { value: "23", label: "Curated works" },
+      { value: "4", label: "Series chapters" },
       { value: "2K", label: "Master resolution" },
     ],
   },

@@ -44,7 +44,7 @@ export default function Hero() {
         <Reveal delay={220}>
           <div className="grid grid-cols-3 gap-3">
             <Frame ratio="portrait" className="mt-10" src="/moscow-editorial-folio/photos/02_Monochrome_Profile_IMG_E3079.jpg" alt="Monochrome Profile" />
-            <Frame ratio="portrait" src="/moscow-editorial-folio/photos/05_Boulevard_Stroll_IMG_E3083.jpg" alt="Boulevard Stroll" />
+            <Frame ratio="portrait" src="/moscow-editorial-folio/photos/00_Magazine_Cover.jpg" alt="MOSCOW Magazine Cover" />
             <Frame ratio="portrait" className="mt-6" src="/moscow-editorial-folio/photos/08_Park_Promenade_IMG_E3087.jpg" alt="Park Promenade" />
           </div>
         </Reveal>

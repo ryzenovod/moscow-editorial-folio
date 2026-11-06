@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig, photographerSchema, faqSchema } from "@/config/site";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -62,7 +63,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-ink-50 font-sans text-ink-900 antialiased dark:bg-ink-950 dark:text-ink-100">
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
