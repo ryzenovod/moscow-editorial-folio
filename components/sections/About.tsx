@@ -12,7 +12,7 @@ export default function About() {
     >
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-[0.8fr_1fr]">
         <Reveal>
-          <Frame seed="about" index={0} ratio="portrait" />
+          <Frame ratio="portrait" src="/photos/04_Monochrome_Intellectual_IMG_3078.jpg" alt="Photographer Egor Belousov" />
         </Reveal>
 
         <Reveal delay={120}>

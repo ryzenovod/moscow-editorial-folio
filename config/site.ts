@@ -1,180 +1,291 @@
-/**
- * ─────────────────────────────────────────────────────────────────────────────
- * LUMEN — single source of truth
- * ─────────────────────────────────────────────────────────────────────────────
- * Studio name, galleries, pricing, and copy all live here. Edit this file and
- * the whole portfolio re-themes.
- *
- * ABOUT THE IMAGES: this template ships with ZERO image files. Every "photo" is
- * a deterministic CSS gradient drawn by components/Frame.tsx, so the repo stays
- * tiny, loads instantly, and contains nothing you need a license for.
- * When you have real photography, see the "Using real photos" section of the
- * README — it is a two-line change per image.
- */
-
 export const siteConfig = {
-  name: "Lumen",
-  photographer: "Ada Okonkwo",
-  tagline: "Photography studio",
-  title: "Lumen — Wedding & Portrait Photography in Lisbon",
+  name: "MOSCOW AUTUMN",
+  photographer: "Egor Belousov",
+  tagline: "Editorial & Street Photography",
+  title: "MOSCOW AUTUMN — Editorial & Street Photography Portfolio",
   description:
-    "Lisbon-based wedding and portrait photographer. Natural light, unhurried direction, and galleries delivered in ten days. Booking 2026 dates now.",
-  url: "https://lumen.example.com",
+    "A curated 20-frame editorial photography collection captured across Moscow. Leica M11 Monochrom fine art, Kodak Portra 400 film color, Manezhnaya Square, Alexander Garden and urban atmosphere.",
+  url: "https://ryzenovod.github.io/moscow-editorial-folio",
 
   contact: {
-    email: "hello@lumen.example.com",
-    phone: "+351 910 000 000",
-    phoneHref: "+351910000000",
-    city: "Lisbon",
-    country: "Portugal",
+    email: "belousov.2004@gmail.com",
+    phone: "+7 900 000 0000",
+    phoneHref: "+79000000000",
+    city: "Moscow",
+    country: "Russia",
   },
 
   social: {
-    instagram: "https://instagram.com/",
+    instagram: "https://instagram.com/ryzenovod",
     pinterest: "https://pinterest.com/",
   },
 
   hero: {
-    eyebrow: "Lisbon · Available worldwide",
-    headline: "Light, patience, and the moments between the poses.",
-    sub: "I photograph weddings and portraits for people who would rather be laughing than posing. No shot lists read like a script, no three-hour formal sessions — just a long, warm day, documented properly.",
-    primaryCta: "Check your date",
-    secondaryCta: "See the work",
+    eyebrow: "Moscow · Autumn 2026",
+    headline: "MOSCOW AUTUMN: Light, Architecture & Solitude",
+    sub: "A 20-frame editorial narrative documenting autumn in the capital: from quiet subway corners to grand historical facades, contrasting Leica M11 Monochrom noir with warm Kodak Portra 400 film grain.",
+    primaryCta: "Explore gallery",
+    secondaryCta: "About the series",
   },
 
-  /**
-   * Galleries. Each becomes a filterable collection on the homepage and opens
-   * in the lightbox.
-   *
-   * `shots` is just a count — Frame.tsx generates a distinct gradient per
-   * (gallery, index) pair. Replace with real image paths when you have them.
-   *
-   * `ratio` controls the grid: "portrait" | "landscape" | "square".
-   */
   galleries: [
     {
-      slug: "weddings",
-      name: "Weddings",
-      blurb: "Full-day coverage, documentary-leaning, always unhurried.",
-      shots: 9,
-      ratios: ["portrait", "landscape", "square", "landscape", "portrait", "portrait", "landscape", "square", "portrait"],
+      slug: "monochrome",
+      name: "Monochrome (Leica B&W)",
+      blurb: "High-contrast fine art monochrome captured with Leica M11 Monochrom tonality, silver gelatin highlights and velvety blacks.",
+      photos: [
+      {
+        id: 2,
+        title: "The Architectural Profile",
+        src: "/photos/02_Monochrome_Profile_IMG_E3079.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 3,
+        title: "Modernist Gaze in Noir",
+        src: "/photos/03_Monochrome_Gaze_IMG_E3080.jpg",
+        width: 1792,
+        height: 2400,
+        ratio: "portrait",
+      },
+      {
+        id: 4,
+        title: "The Contemplative Scholar",
+        src: "/photos/04_Monochrome_Intellectual_IMG_3078.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 11,
+        title: "Poise at the Balustrade",
+        src: "/photos/11_Autumn_Contemplation_IMG_3097.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 20,
+        title: "Cafe Reverie",
+        src: "/photos/20_Coffee_Break_Reverie_IMG_3683.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      ],
     },
     {
-      slug: "portraits",
-      name: "Portraits",
-      blurb: "Individuals, couples, and families — usually outdoors, usually golden hour.",
-      shots: 6,
-      ratios: ["portrait", "square", "portrait", "landscape", "portrait", "square"],
+      slug: "editorial-color",
+      name: "Editorial Color (Portra 400)",
+      blurb: "Warm medium-format cinematic hues inspired by Kodak Portra 400, capturing soft autumn daylight and authentic connection.",
+      photos: [
+      {
+        id: 1,
+        title: "Subway Reverie in Green & Burgundy",
+        src: "/photos/01_Metro_Solitude_IMG_3608.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 5,
+        title: "Moscow Boulevard Autumn Walk",
+        src: "/photos/05_Boulevard_Stroll_IMG_E3083.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 7,
+        title: "Reflections by the Balustrade",
+        src: "/photos/07_Autumn_Garden_Profile_IMG_E3085.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 8,
+        title: "The Autumn Promenade",
+        src: "/photos/08_Park_Promenade_IMG_E3087.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 9,
+        title: "The Gentle Smile of Autumn",
+        src: "/photos/09_Lantern_Warmth_IMG_3089.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 12,
+        title: "Echoes of the Red Museum",
+        src: "/photos/12_Red_Square_Heritage_IMG_3108.jpg",
+        width: 1792,
+        height: 2400,
+        ratio: "portrait",
+      },
+      {
+        id: 13,
+        title: "The Manezhnaya Rhythm",
+        src: "/photos/13_Manezh_Bustle_IMG_3104.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 15,
+        title: "Camaraderie in Autumn Bloom",
+        src: "/photos/15_Floral_Camaraderie_IMG_3110.jpg",
+        width: 2390,
+        height: 1792,
+        ratio: "landscape",
+      },
+      {
+        id: 17,
+        title: "Golden Hour Companions",
+        src: "/photos/17_Park_Companionship_IMG_3615.jpg",
+        width: 2392,
+        height: 1792,
+        ratio: "landscape",
+      },
+      ],
     },
     {
-      slug: "editorial",
-      name: "Editorial",
-      blurb: "Brand and magazine commissions. Studio or location.",
-      shots: 6,
-      ratios: ["landscape", "portrait", "landscape", "square", "landscape", "portrait"],
+      slug: "moscow-street",
+      name: "Moscow Street & Details",
+      blurb: "Dynamic angles, urban geometry, and decisive moments through the bustling avenues and quiet alleys of Moscow.",
+      photos: [
+      {
+        id: 6,
+        title: "Historic Facades & Autumn Hue",
+        src: "/photos/06_City_Silhouette_IMG_3079.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 10,
+        title: "The Kremlin Wall Vista",
+        src: "/photos/10_Kremlin_Garden_Scale_IMG_3093.jpg",
+        width: 1792,
+        height: 2400,
+        ratio: "portrait",
+      },
+      {
+        id: 14,
+        title: "Passage through Manezh",
+        src: "/photos/14_Passage_of_Time_IMG_3106.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      {
+        id: 16,
+        title: "Under the Autumn Sky",
+        src: "/photos/16_Urban_Duo_LowAngle_IMG_3618.jpg",
+        width: 2392,
+        height: 1792,
+        ratio: "landscape",
+      },
+      {
+        id: 18,
+        title: "Solitary Path through Gold",
+        src: "/photos/18_Autumn_Alley_Solitude_IMG_3610.jpg",
+        width: 1792,
+        height: 2400,
+        ratio: "portrait",
+      },
+      {
+        id: 19,
+        title: "Late Afternoon Diner Still Life",
+        src: "/photos/19_Cafe_Fries_And_Coffee_IMG_3111.jpg",
+        width: 1792,
+        height: 2390,
+        ratio: "portrait",
+      },
+      ],
     },
   ],
 
   about: {
-    heading: "I have photographed 140 weddings and cried at most of them",
+    heading: "20 frames exploring the rhythm of late October in Moscow",
     body: [
-      "I picked up a camera in 2013 to document a friend's wedding nobody could afford to have photographed. I have not really put it down since.",
-      "My approach is simple: arrive early, stay quiet, know where the light is going to be an hour from now. I will direct you when it helps and disappear when it does not. The photographs you will remember are almost never the ones you posed for.",
+      "This editorial collection captures the distinct atmosphere of Moscow in autumn: tailored wool overcoats against neoclassical facades, golden foliage in Alexander Garden, quiet contemplation on the metro, and spontaneous moments of friendship.",
+      "Shot with an emphasis on authentic texture, balanced geometry, and classic cinematic color grading inspired by Kodak Portra 400 and Leica M11 Monochrom optics.",
     ],
     stats: [
-      { value: "140+", label: "Weddings" },
-      { value: "10 days", label: "Gallery delivery" },
-      { value: "2013", label: "Shooting since" },
+      { value: "20", label: "Curated frames" },
+      { value: "3", label: "Series chapters" },
+      { value: "2K", label: "Master resolution" },
     ],
   },
 
-  /**
-   * Packages. Prices are strings so you can write "from €2,400" or "on request".
-   */
   packages: [
     {
-      name: "Portrait session",
-      price: "€450",
-      duration: "90 minutes",
+      name: "Editorial photoshoot",
+      price: "Custom",
+      duration: "2–3 hours",
       features: [
-        "One location, Lisbon or nearby",
-        "40+ edited photographs",
-        "Online gallery, 12-month hosting",
-        "Print release included",
-      ],
-      featured: false,
-    },
-    {
-      name: "Wedding — full day",
-      price: "€2,400",
-      duration: "10 hours",
-      features: [
-        "Preparations through first dance",
-        "600+ edited photographs",
-        "Online gallery with client proofing",
-        "Engagement session included",
-        "Print release included",
+        "Outdoor or studio location in Moscow",
+        "Art direction & moodboard curation",
+        "20+ fully color-graded master deliverables",
+        "Full high-resolution print license",
       ],
       featured: true,
     },
     {
-      name: "Editorial / brand",
+      name: "Lookbook & brand campaign",
       price: "On request",
       duration: "Half or full day",
       features: [
-        "Studio or location",
-        "Licensed for commercial use",
-        "Art direction on request",
-        "48-hour turnaround available",
+        "Tailored menswear & streetwear editorial",
+        "Commercial licensing included",
+        "Color grading in Portra 400 or Leica B&W",
+        "Fast 48-hour preview delivery",
       ],
       featured: false,
     },
   ],
 
-  /** The booking process, set out plainly. */
   process: [
-    ["Check the date", "Send me your date and I will tell you within a day whether I am free."],
-    ["Meet", "A coffee or a video call. No pitch — mostly I want to know how you want the day to feel."],
-    ["The day", "I arrive early, find the light, and stay out of the way."],
-    ["Your gallery", "Delivered in ten days, in a private online gallery you can share and download."],
+    ["Concept & moodboard", "Defining the visual language, location scouting, and styling direction."],
+    ["The shoot", "Natural light, fluid movement, capturing unforced cinematic moments."],
+    ["Color grading", "Analog film emulation, bespoke Portra 400 warmth or high-contrast Leica monochrome."],
+    ["Final delivery", "Curated web gallery and full-resolution print-ready files delivered within days."],
   ],
 
   faqs: [
     {
-      q: "Do you travel?",
-      a: "Yes, constantly. Travel within Portugal is included. Anywhere else, I add flights and a night's accommodation at cost — no markup, no day rate for travel.",
+      q: "What equipment and aesthetic defines this series?",
+      a: "The series draws inspiration from 35mm and medium-format rangefinders (Leica M11 Monochrom, Hasselblad) paired with prime 50mm and 85mm lenses at wide apertures for creamy subject separation.",
     },
     {
-      q: "How long until we see the photographs?",
-      a: "Ten days for the full gallery. I send a preview of around thirty images within 48 hours, because waiting is unbearable and you will want something to show people.",
-    },
-    {
-      q: "Do we get the raw files?",
-      a: "No, and no photographer worth booking will say yes. Editing is half the work and half the reason the photographs look like mine. You get every keeper, fully edited, at full resolution, with a print release.",
-    },
-    {
-      q: "What happens if you are ill?",
-      a: "I carry professional insurance and I am part of a network of Lisbon photographers who cover each other. In eleven years I have never missed a wedding, but there is a real plan if I ever do.",
+      q: "Can these images be licensed for editorial print?",
+      a: "Yes, all 20 frames are available in master 2K/4K resolution for editorial, magazine, and portfolio publication.",
     },
   ],
 
-  /** Client proofing page copy (app/proofing/page.tsx). */
   proofing: {
     heading: "Client galleries",
-    body: "If you are here to see your photographs, enter the gallery code I sent you. Galleries stay online for twelve months.",
-    placeholder: "e.g. okonkwo-2026",
+    body: "Access private client photoshoot deliverables and high-resolution downloads.",
+    placeholder: "e.g. moscow-autumn-2026",
   },
 
-  footerNote: "Built with the free Lumen template by",
+  footerNote: "Designed with Lumen Photography Template. Curated by",
   footerCredit: {
-    label: "Pixel & Oak",
-    href: "https://pixelandoak.com/templates/photography-portfolio-website-template/?utm_source=lumen-template",
+    label: "Egor Belousov",
+    href: "https://github.com/ryzenovod",
   },
 } as const;
 
 export type SiteConfig = typeof siteConfig;
 
-/** schema.org data — helps you show up for "<city> wedding photographer". */
+
 export function photographerSchema() {
   return {
     "@context": "https://schema.org",
@@ -184,22 +295,15 @@ export function photographerSchema() {
     description: siteConfig.description,
     url: siteConfig.url,
     email: siteConfig.contact.email,
-    telephone: siteConfig.contact.phone,
     address: {
       "@type": "PostalAddress",
       addressLocality: siteConfig.contact.city,
       addressCountry: siteConfig.contact.country,
     },
     founder: { "@type": "Person", name: siteConfig.photographer },
-    makesOffer: siteConfig.packages.map((p) => ({
-      "@type": "Offer",
-      name: p.name,
-      description: `${p.name} — ${p.duration}`,
-    })),
   };
 }
 
-/** FAQ structured data — eligible for rich results. */
 export function faqSchema() {
   return {
     "@context": "https://schema.org",

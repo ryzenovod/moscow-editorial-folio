@@ -1,14 +1,30 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 import Frame from "@/components/Frame";
 import { siteConfig } from "@/config/site";
 
-type Shot = { gallery: string; galleryName: string; index: number; ratio: string };
+type PhotoItem = {
+  id: number;
+  title: string;
+  src: string;
+  width: number;
+  height: number;
+  ratio: "portrait" | "landscape" | "square";
+};
+
+type Shot = {
+  gallery: string;
+  galleryName: string;
+  index: number;
+  ratio: string;
+  photo: PhotoItem;
+};
 
 /**
  * Filterable masonry gallery with a keyboard-accessible lightbox.
- * No carousel library, no lightbox dependency — about 100 lines of React.
+ * Preserves the original Lumen design, typography, and layout.
  */
 export default function Gallery() {
   const galleries = siteConfig.galleries;
@@ -16,11 +32,12 @@ export default function Gallery() {
   const [open, setOpen] = useState<number | null>(null);
 
   const shots: Shot[] = galleries.flatMap((g) =>
-    Array.from({ length: g.shots }, (_, i) => ({
+    g.photos.map((p, i) => ({
       gallery: g.slug,
       galleryName: g.name,
       index: i,
-      ratio: g.ratios[i] ?? "portrait",
+      ratio: p.ratio ?? "portrait",
+      photo: p,
     })),
   );
 
@@ -68,17 +85,17 @@ export default function Gallery() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.18em] opacity-50">
-              Selected work
+              Selected series
             </span>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-5xl">
-              The work
+              The Portfolio
             </h2>
           </div>
 
           {/* Filters */}
           <div className="flex flex-wrap gap-2">
             <FilterButton
-              label="Everything"
+              label="All 20 Frames"
               isActive={active === "all"}
               onClick={() => {
                 setActive("all");
@@ -108,14 +125,22 @@ export default function Gallery() {
         <div className="masonry mt-10">
           {visible.map((s, i) => (
             <button
-              key={`${s.gallery}-${s.index}`}
+              key={`${s.gallery}-${s.index}-${s.photo.id}`}
               type="button"
               onClick={() => setOpen(i)}
-              className="group block w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-current"
-              aria-label={`Open ${s.galleryName} photograph ${s.index + 1} in lightbox`}
+              className="group block w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-current text-left mb-6"
+              aria-label={`Open ${s.photo.title} in lightbox`}
             >
-              <div className="transition-opacity duration-300 group-hover:opacity-85">
-                <Frame seed={s.gallery} index={s.index} ratio={s.ratio} />
+              <div className="transition-opacity duration-300 group-hover:opacity-85 shadow-sm">
+                <Frame
+                  ratio={s.ratio}
+                  src={s.photo.src}
+                  alt={s.photo.title}
+                />
+              </div>
+              <div className="mt-2.5 px-0.5">
+                <p className="text-xs font-medium tracking-wide opacity-90">{s.photo.title}</p>
+                <p className="text-[10px] uppercase tracking-wider opacity-50 mt-0.5">{s.galleryName}</p>
               </div>
             </button>
           ))}
@@ -128,7 +153,7 @@ export default function Gallery() {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/92 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
-          aria-label={`${current.galleryName} photograph ${current.index + 1}`}
+          aria-label={current.photo.title}
           onClick={close}
         >
           <button
@@ -157,17 +182,21 @@ export default function Gallery() {
           </button>
 
           <figure
-            className="max-h-[86vh] w-full max-w-3xl"
+            className="max-h-[88vh] w-full max-w-4xl flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <Frame
-              seed={current.gallery}
-              index={current.index}
-              ratio={current.ratio}
-              className="max-h-[78vh]"
-            />
-            <figcaption className="mt-3 text-center text-xs uppercase tracking-[0.16em] text-white/50">
-              {current.galleryName} · {open! + 1} / {visible.length}
+            <div className="relative max-h-[78vh] w-full flex items-center justify-center">
+              <Image
+                src={current.photo.src}
+                alt={current.photo.title}
+                width={current.photo.width}
+                height={current.photo.height}
+                className="max-h-[76vh] w-auto max-w-full rounded-sm object-contain shadow-2xl"
+                priority
+              />
+            </div>
+            <figcaption className="mt-3 text-center text-xs tracking-[0.16em] text-white/70">
+              <span className="font-semibold text-white uppercase">{current.photo.title}</span> · {current.galleryName} · {open! + 1} / {visible.length}
             </figcaption>
           </figure>
 
