@@ -37,7 +37,7 @@ export const siteConfig = {
       {
         id: 2,
         title: "The Architectural Profile",
-        src: "/photos/02_Monochrome_Profile_IMG_E3079.jpg",
+        src: "/moscow-editorial-folio/photos/02_Monochrome_Profile_IMG_E3079.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -45,7 +45,7 @@ export const siteConfig = {
       {
         id: 3,
         title: "Modernist Gaze in Noir",
-        src: "/photos/03_Monochrome_Gaze_IMG_E3080.jpg",
+        src: "/moscow-editorial-folio/photos/03_Monochrome_Gaze_IMG_E3080.jpg",
         width: 1792,
         height: 2400,
         ratio: "portrait",
@@ -53,7 +53,7 @@ export const siteConfig = {
       {
         id: 4,
         title: "The Contemplative Scholar",
-        src: "/photos/04_Monochrome_Intellectual_IMG_3078.jpg",
+        src: "/moscow-editorial-folio/photos/04_Monochrome_Intellectual_IMG_3078.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -61,7 +61,7 @@ export const siteConfig = {
       {
         id: 11,
         title: "Poise at the Balustrade",
-        src: "/photos/11_Autumn_Contemplation_IMG_3097.jpg",
+        src: "/moscow-editorial-folio/photos/11_Autumn_Contemplation_IMG_3097.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -69,7 +69,7 @@ export const siteConfig = {
       {
         id: 20,
         title: "Cafe Reverie",
-        src: "/photos/20_Coffee_Break_Reverie_IMG_3683.jpg",
+        src: "/moscow-editorial-folio/photos/20_Coffee_Break_Reverie_IMG_3683.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -84,7 +84,7 @@ export const siteConfig = {
       {
         id: 1,
         title: "Subway Reverie in Green & Burgundy",
-        src: "/photos/01_Metro_Solitude_IMG_3608.jpg",
+        src: "/moscow-editorial-folio/photos/01_Metro_Solitude_IMG_3608.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -92,7 +92,7 @@ export const siteConfig = {
       {
         id: 5,
         title: "Moscow Boulevard Autumn Walk",
-        src: "/photos/05_Boulevard_Stroll_IMG_E3083.jpg",
+        src: "/moscow-editorial-folio/photos/05_Boulevard_Stroll_IMG_E3083.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -100,7 +100,7 @@ export const siteConfig = {
       {
         id: 7,
         title: "Reflections by the Balustrade",
-        src: "/photos/07_Autumn_Garden_Profile_IMG_E3085.jpg",
+        src: "/moscow-editorial-folio/photos/07_Autumn_Garden_Profile_IMG_E3085.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -108,7 +108,7 @@ export const siteConfig = {
       {
         id: 8,
         title: "The Autumn Promenade",
-        src: "/photos/08_Park_Promenade_IMG_E3087.jpg",
+        src: "/moscow-editorial-folio/photos/08_Park_Promenade_IMG_E3087.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -116,7 +116,7 @@ export const siteConfig = {
       {
         id: 9,
         title: "The Gentle Smile of Autumn",
-        src: "/photos/09_Lantern_Warmth_IMG_3089.jpg",
+        src: "/moscow-editorial-folio/photos/09_Lantern_Warmth_IMG_3089.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -124,7 +124,7 @@ export const siteConfig = {
       {
         id: 12,
         title: "Echoes of the Red Museum",
-        src: "/photos/12_Red_Square_Heritage_IMG_3108.jpg",
+        src: "/moscow-editorial-folio/photos/12_Red_Square_Heritage_IMG_3108.jpg",
         width: 1792,
         height: 2400,
         ratio: "portrait",
@@ -132,7 +132,7 @@ export const siteConfig = {
       {
         id: 13,
         title: "The Manezhnaya Rhythm",
-        src: "/photos/13_Manezh_Bustle_IMG_3104.jpg",
+        src: "/moscow-editorial-folio/photos/13_Manezh_Bustle_IMG_3104.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -140,7 +140,7 @@ export const siteConfig = {
       {
         id: 15,
         title: "Camaraderie in Autumn Bloom",
-        src: "/photos/15_Floral_Camaraderie_IMG_3110.jpg",
+        src: "/moscow-editorial-folio/photos/15_Floral_Camaraderie_IMG_3110.jpg",
         width: 2390,
         height: 1792,
         ratio: "landscape",
@@ -148,7 +148,7 @@ export const siteConfig = {
       {
         id: 17,
         title: "Golden Hour Companions",
-        src: "/photos/17_Park_Companionship_IMG_3615.jpg",
+        src: "/moscow-editorial-folio/photos/17_Park_Companionship_IMG_3615.jpg",
         width: 2392,
         height: 1792,
         ratio: "landscape",
@@ -163,7 +163,7 @@ export const siteConfig = {
       {
         id: 6,
         title: "Historic Facades & Autumn Hue",
-        src: "/photos/06_City_Silhouette_IMG_3079.jpg",
+        src: "/moscow-editorial-folio/photos/06_City_Silhouette_IMG_3079.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -171,7 +171,7 @@ export const siteConfig = {
       {
         id: 10,
         title: "The Kremlin Wall Vista",
-        src: "/photos/10_Kremlin_Garden_Scale_IMG_3093.jpg",
+        src: "/moscow-editorial-folio/photos/10_Kremlin_Garden_Scale_IMG_3093.jpg",
         width: 1792,
         height: 2400,
         ratio: "portrait",
@@ -179,7 +179,7 @@ export const siteConfig = {
       {
         id: 14,
         title: "Passage through Manezh",
-        src: "/photos/14_Passage_of_Time_IMG_3106.jpg",
+        src: "/moscow-editorial-folio/photos/14_Passage_of_Time_IMG_3106.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
@@ -187,7 +187,7 @@ export const siteConfig = {
       {
         id: 16,
         title: "Under the Autumn Sky",
-        src: "/photos/16_Urban_Duo_LowAngle_IMG_3618.jpg",
+        src: "/moscow-editorial-folio/photos/16_Urban_Duo_LowAngle_IMG_3618.jpg",
         width: 2392,
         height: 1792,
         ratio: "landscape",
@@ -195,7 +195,7 @@ export const siteConfig = {
       {
         id: 18,
         title: "Solitary Path through Gold",
-        src: "/photos/18_Autumn_Alley_Solitude_IMG_3610.jpg",
+        src: "/moscow-editorial-folio/photos/18_Autumn_Alley_Solitude_IMG_3610.jpg",
         width: 1792,
         height: 2400,
         ratio: "portrait",
@@ -203,7 +203,7 @@ export const siteConfig = {
       {
         id: 19,
         title: "Late Afternoon Diner Still Life",
-        src: "/photos/19_Cafe_Fries_And_Coffee_IMG_3111.jpg",
+        src: "/moscow-editorial-folio/photos/19_Cafe_Fries_And_Coffee_IMG_3111.jpg",
         width: 1792,
         height: 2390,
         ratio: "portrait",
