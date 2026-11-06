@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const RATIO_CLASS: Record<string, string> = {
   portrait: "aspect-[4/5]",
@@ -20,7 +23,12 @@ export default function Frame({
   src?: string;
 }) {
   return (
-    <div
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 35, scale: 0.96, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
       className={`relative overflow-hidden rounded-sm ${RATIO_CLASS[ratio] ?? RATIO_CLASS.portrait} ${className}`}
       role={alt ? "img" : undefined}
       aria-label={alt}
@@ -37,6 +45,6 @@ export default function Frame({
       ) : (
         <div className="w-full h-full bg-neutral-800" />
       )}
-    </div>
+    </motion.div>
   );
 }

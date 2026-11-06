@@ -1,9 +1,15 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import Frame from "@/components/Frame";
 import { siteConfig } from "@/config/site";
+import Tilt from "react-parallax-tilt";
+import { motion, AnimatePresence } from "framer-motion";
+import Lightbox from "yet-another-react-lightbox";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/styles.css";
+import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
 
 type PhotoItem = {
   id: number;
@@ -23,13 +29,14 @@ type Shot = {
 };
 
 /**
- * Filterable masonry gallery with a keyboard-accessible lightbox.
- * Preserves the original Lumen design, typography, and layout.
+ * Filterable masonry gallery with a physical 3D glare tilt,
+ * FLIP grid transitions, factory 4K Zoom Lightbox, and Before/After slider.
  */
 export default function Gallery() {
   const galleries = siteConfig.galleries;
   const [active, setActive] = useState<string>("all");
   const [open, setOpen] = useState<number | null>(null);
+  const [compareMode, setCompareMode] = useState<boolean>(false);
 
   const shots: Shot[] = galleries.flatMap((g) =>
     g.photos.map((p, i) => ({
@@ -44,40 +51,12 @@ export default function Gallery() {
   const visible =
     active === "all" ? shots : shots.filter((s) => s.gallery === active);
 
-  const close = useCallback(() => setOpen(null), []);
-  const next = useCallback(
-    () => setOpen((i) => (i === null ? null : (i + 1) % visible.length)),
-    [visible.length],
-  );
-  const prev = useCallback(
-    () =>
-      setOpen((i) =>
-        i === null ? null : (i - 1 + visible.length) % visible.length,
-      ),
-    [visible.length],
-  );
-
-  // Keyboard controls + scroll lock while the lightbox is open.
-  useEffect(() => {
-    if (open === null) return;
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-    };
-
-    document.addEventListener("keydown", onKey);
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
-    };
-  }, [open, close, next, prev]);
-
-  const current = open === null ? null : visible[open];
+  const slides = visible.map((s) => ({
+    src: s.photo.src,
+    alt: s.photo.title,
+    title: s.photo.title,
+    description: `${s.photo.title} · ${s.galleryName}`,
+  }));
 
   return (
     <section id="work" className="py-20 sm:py-28">
@@ -92,10 +71,10 @@ export default function Gallery() {
             </h2>
           </div>
 
-          {/* Filters */}
-          <div className="flex flex-wrap gap-2">
+          {/* Filters & Comparison Toggle */}
+          <div className="flex flex-wrap items-center gap-2">
             <FilterButton
-              label="All 20 Frames"
+              label={`All ${shots.length} Works`}
               isActive={active === "all"}
               onClick={() => {
                 setActive("all");
@@ -113,6 +92,19 @@ export default function Gallery() {
                 }}
               />
             ))}
+
+            <button
+              type="button"
+              onClick={() => setCompareMode(!compareMode)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                compareMode
+                  ? "bg-amber-600 text-white shadow-sm"
+                  : "border border-amber-600/40 text-amber-700 dark:text-amber-300 hover:bg-amber-500/10"
+              }`}
+              aria-pressed={compareMode}
+            >
+              <span>{compareMode ? "⇄ Exit Comparison" : "⇄ Raw vs Retouch"}</span>
+            </button>
           </div>
         </div>
 
@@ -122,99 +114,86 @@ export default function Gallery() {
           </p>
         )}
 
+        {compareMode && (
+          <p className="mt-4 text-xs font-medium tracking-wide text-amber-700 dark:text-amber-400">
+            Drag the central slider left/right on any photo to inspect iPhone RAW original vs 2K AI Retouch.
+          </p>
+        )}
+
         <div className="masonry mt-10">
-          {visible.map((s, i) => (
-            <button
-              key={`${s.gallery}-${s.index}-${s.photo.id}`}
-              type="button"
-              onClick={() => setOpen(i)}
-              className="group block w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-current text-left mb-6"
-              aria-label={`Open ${s.photo.title} in lightbox`}
-            >
-              <div className="transition-opacity duration-300 group-hover:opacity-85 shadow-sm">
-                <Frame
-                  ratio={s.ratio}
-                  src={s.photo.src}
-                  alt={s.photo.title}
-                />
-              </div>
-              <div className="mt-2.5 px-0.5">
-                <p className="text-xs font-medium tracking-wide opacity-90">{s.photo.title}</p>
-                <p className="text-[10px] uppercase tracking-wider opacity-50 mt-0.5">{s.galleryName}</p>
-              </div>
-            </button>
-          ))}
+          <AnimatePresence mode="popLayout">
+            {visible.map((s, i) => (
+              <motion.div
+                key={`${s.gallery}-${s.index}-${s.photo.id}`}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                className="mb-6 block w-full text-left"
+              >
+                {compareMode ? (
+                  <div className="relative overflow-hidden rounded-sm aspect-[4/5] shadow-sm">
+                    <ReactCompareSlider
+                      itemOne={
+                        <ReactCompareSliderImage
+                          src={s.photo.src.replace("/photos/", "/raw/")}
+                          alt={`${s.photo.title} (iPhone Raw)`}
+                        />
+                      }
+                      itemTwo={
+                        <ReactCompareSliderImage
+                          src={s.photo.src}
+                          alt={`${s.photo.title} (2K Master Retouch)`}
+                        />
+                      }
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setOpen(i)}
+                    className="group block w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-current text-left"
+                    aria-label={`Open ${s.photo.title} in lightbox`}
+                  >
+                    <Tilt
+                      glareEnable={true}
+                      glareMaxOpacity={0.18}
+                      glareColor="#ffffff"
+                      glarePosition="all"
+                      tiltMaxAngleX={6}
+                      tiltMaxAngleY={6}
+                      scale={1.015}
+                      transitionSpeed={1500}
+                      className="w-full transition-opacity duration-300 group-hover:opacity-85 shadow-sm"
+                    >
+                      <Frame
+                        ratio={s.ratio}
+                        src={s.photo.src}
+                        alt={s.photo.title}
+                      />
+                    </Tilt>
+                  </button>
+                )}
+                <div className="mt-2.5 px-0.5">
+                  <p className="text-xs font-medium tracking-wide opacity-90">{s.photo.title}</p>
+                  <p className="text-[10px] uppercase tracking-wider opacity-50 mt-0.5">{s.galleryName}</p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
 
-      {/* Lightbox */}
-      {current && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/92 p-4 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-          aria-label={current.photo.title}
-          onClick={close}
-        >
-          <button
-            type="button"
-            onClick={close}
-            aria-label="Close"
-            className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
-          </button>
-
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              prev();
-            }}
-            aria-label="Previous photograph"
-            className="absolute left-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:left-8"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="m15 18-6-6 6-6" />
-            </svg>
-          </button>
-
-          <figure
-            className="max-h-[88vh] w-full max-w-4xl flex flex-col items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative max-h-[78vh] w-full flex items-center justify-center">
-              <Image
-                src={current.photo.src}
-                alt={current.photo.title}
-                width={current.photo.width}
-                height={current.photo.height}
-                className="max-h-[76vh] w-auto max-w-full rounded-sm object-contain shadow-2xl"
-                priority
-              />
-            </div>
-            <figcaption className="mt-3 text-center text-xs tracking-[0.16em] text-white/70">
-              <span className="font-semibold text-white uppercase">{current.photo.title}</span> · {current.galleryName} · {open! + 1} / {visible.length}
-            </figcaption>
-          </figure>
-
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              next();
-            }}
-            aria-label="Next photograph"
-            className="absolute right-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-8"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-          </button>
-        </div>
-      )}
+      {/* Official Factory Lightbox with Zoom and Fullscreen */}
+      <Lightbox
+        open={open !== null}
+        index={open ?? 0}
+        close={() => setOpen(null)}
+        slides={slides}
+        plugins={[Fullscreen, Zoom]}
+      />
     </section>
   );
 }
